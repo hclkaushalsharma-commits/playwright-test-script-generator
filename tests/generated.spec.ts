@@ -10,7 +10,7 @@ test('4 - Checkout happy path', async ({ page }) => {
   await app.login.login('standard_user', 'secret_sauce');
   await app.inventory.expectLoaded();
   await app.inventory.addProduct('Sauce Labs Backpack');
-  await app.inventory.openCart();
+  await page.locator('[data-test="shopping-cart-link"]').click();
   await app.cart.checkout();
   await app.checkout.fillCustomer('Kaushal', 'Sharma', '201301');
   await app.checkout.finishOrder();
